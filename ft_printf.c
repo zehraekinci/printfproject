@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void ft_printf(const char *format, ...) 
+int ft_printf(const char *format, ...) 
 {
     va_list args;
     va_start(args, format);
@@ -65,4 +65,5 @@ void ft_printf(const char *format, ...)
     }
 
     va_end(args);
+    return 1;
 }

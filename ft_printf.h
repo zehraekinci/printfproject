@@ -15,7 +15,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-void	ft_printf(const char *format, ...);
+int	ft_printf(const char *format, ...);
 void	ft_putchar(char c);
 void	ft_putdint(int dec);
 int	ft_puthexad(unsigned int hex, int to);
