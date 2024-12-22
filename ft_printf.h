@@ -19,10 +19,10 @@
 int ft_flag_catch(va_list args, char specifier);
 int	ft_printf(const char *format, ...);
 int	ft_putchar(char c);
-void	ft_putdint(int dec);
+int	ft_putdint(int dec);
 int	ft_puthexad(unsigned int hex, int to);
-int	ft_putpointer(void *ptr);
+int	ft_putpointer(unsigned long ul);
 int	ft_putstring(char	*string);
-void	ft_putunchar(unsigned int dec);
+int	ft_putunchar(unsigned int dec);
 
 #endif

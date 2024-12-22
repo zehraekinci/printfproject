@@ -16,42 +16,35 @@ int ft_flag_catch(va_list args, char specifier)
 {
     if (specifier == 'd' || specifier == 'i') 
     { 
-        int i = va_arg(args, int); 
-        ft_putdint(i); // ft_putdint fonksiyonu tanımlanmalı
+        return (ft_putdint(va_arg(args, int)));
     }
     else if (specifier == 's') 
     {  
-        char *str = va_arg(args, char *); 
-        ft_putstring(str); // ft_putstring fonksiyonu tanımlanmalı
+        return (ft_putstring(va_arg(args, char *)));
     }
     else if (specifier == 'c') 
     { 
-        char c = (char)va_arg(args, int);
-        ft_putchar(c);
+        return (ft_putchar((char)va_arg(args, int)));
     }
     else if (specifier == 'u') 
     { 
-        unsigned int a = va_arg(args, unsigned int);
-        ft_putunchar(a); // ft_putunchar fonksiyonu tanımlanmalı
+        return (ft_putunchar(va_arg(args, unsigned int)));
     }
     else if (specifier == 'x' || specifier == 'X')
     {
-        unsigned int e = va_arg(args, unsigned int);
-        ft_puthexad(e, specifier); // ft_puthexad fonksiyonu tanımlanmalı
+        return (ft_puthexad(va_arg(args, unsigned int),specifier));
     }
     else if (specifier == 'p')
     {
-        void *e = va_arg(args, void*);
-        ft_putpointer(e); // ft_putpointer fonksiyonu tanımlanmalı
+        return (ft_putpointer(va_arg(args, unsigned long)));
     }
     else {
-        ft_putchar('%');
-        ft_putchar(specifier);
+        return (ft_putchar('%'));
+        return (ft_putchar(specifier));
     }
     return 1;
 }
 
-// ft_printf fonksiyonu
 int ft_printf(const char *format, ...) 
 {
     va_list args;
@@ -64,17 +57,17 @@ int ft_printf(const char *format, ...)
         if (*ptr == '%') 
         {  
             ptr++;
-            len += ft_flag_catch(args, *ptr); // Format işlemi
+            len += ft_flag_catch(args, *ptr);
         }
         else
         {
-            len += write(1, ptr, 1); // Normal karakteri yazdır
+            len += write(1, ptr, 1);
         }
         ptr++;
     }
 
     va_end(args);
-    return len; // Yazdırılan toplam karakter sayısı
+    return len;
 }
 
 /*int ft_printf(const char *format, ...) 

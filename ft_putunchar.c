@@ -12,26 +12,65 @@
 
 #include "ft_printf.h"
 
-void	ft_putunchar(unsigned int dec)
+int	ft_putunchar(unsigned int dec)
 {
 	char	*base;
+	int		len;
 
 	base = "0123456789";
+	len = 0;
 	if (dec == -2147483648)
 	{
 		write(1, "2147483648", 11);
-		return ;
+		return (11);
 	}
 	if (dec < 0)
 	{
 		write(1, "-", 1);
+		len += 1;
 		dec = -dec;
 	}
 	if (dec > 9)
 	{
-		ft_putunchar(dec / 10);
-		ft_putunchar(dec % 10);
+		len += ft_putunchar(dec / 10);
+		len += ft_putunchar(dec % 10);
 	}
 	else
+	{
 		write(1, &base[dec], 1);
+		len += 1;
+	}
+	return (len);
 }
+
+/*void	ft_putunchar(unsigned int dec)
+{
+	char	*base;
+	int		len;
+
+	base = "0123456789";
+	len = 0;
+	if (dec == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
+	if (dec < 0)
+	{
+		write(1, "-", 1);
+		len += 1;
+		dec = -dec;
+	}
+	if (dec > 9)
+	{
+		len += ft_putdint(dec / 10);
+		len += ft_putdint(dec % 10);
+	}
+	else
+	{
+		write(1, &base[dec], 1);
+		len += 1;
+	}
+	return (len);
+}
+*/

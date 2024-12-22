@@ -12,26 +12,19 @@
 
 #include "ft_printf.h"
 
-int	ft_putstring(char	*string)
+int	ft_strlen(char *string)
 {
-	if (string == NULL) 
-    {
-        write(1, "(null)", 6);  // NULL yerine "(null)" yazdır
-        return 6;  // "(null)" yazdırıldığında 6 karakter yazdırıldı
-    }
+	int	i;
 
-    if (*string == '\0')  // Eğer string boşsa, hiçbir şey yazdırma
-    {
-        return 0;  // Boş string olduğu için hiçbir şey yazdırılmadı
-    }
+	i = 0;
+	while (string[i])
+		i++;
+	return (i);
+}
 
-    int len = 0;
-    while (*string)  // Stringin sonuna kadar gidip yazdırma
-    {
-        write(1, string, 1);  // Stringin her bir karakterini yazdır
-        string++;
-        len++;  // Yazdırılan karakter sayısını artır
-    }
-
-    return len;  // Yazdı
+int	ft_putstring(char *string)
+{
+	if (!string)
+		return (ft_putstring("(null)"));
+	return (write(1, string, ft_strlen(string)));
 }
